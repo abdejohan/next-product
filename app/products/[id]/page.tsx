@@ -8,8 +8,7 @@ const ProductPage = async ({
     id: string;
   };
 }) => {
-  const product = await getProduct(id);
-  console.log('id: ', product);
+  const product = (await getProduct(id)) as any;
 
   return (
     <>
@@ -18,6 +17,7 @@ const ProductPage = async ({
       <h2>{product.fields.description}</h2>
       <h2>{product.fields.price}</h2>
       <Image
+        alt="product image"
         src={'https:' + product.fields.productImage.fields.file.url}
         width={500}
         height={500}
