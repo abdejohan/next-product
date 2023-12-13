@@ -11,6 +11,6 @@ datasource db {
 }
 
 model Product {
-  id       Int @id
-  quantity Int @default(0)
+  id       String @id
+  quantity Int    @default(0)
 }
