@@ -1,13 +1,19 @@
 import { getProduct } from "@/utils";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
 const ProductPage = async ({ params: { id } }: { params: { id: string } }) => {
+
+  
   const product = (await getProduct(id)) as any;
   const response = await fetch(`http://localhost:3000/api/products/${id}`);
   const data = await response.json();
-  console.log("data", data);
+
+  if(data === "Zodd error") {
+    notFound();
+  }
 
   return (
     <>
