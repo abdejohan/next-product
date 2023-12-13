@@ -1,20 +1,13 @@
-import { getProduct } from "@/utils";
-import Image from "next/image";
+import { getProduct } from '@/utils';
+import Image from 'next/image';
 
-const ProductPage = async ({
-  params: { id },
-}: {
-  params: {
-    id: string;
-  };
-}) => {
+export const dynamic = 'force-dynamic';
+
+const ProductPage = async ({ params: { id } }: { params: { id: string } }) => {
   const product = (await getProduct(id)) as any;
-
   const response = await fetch(`http://localhost:3000/api/products/${id}`);
-
   const data = await response.json();
-
-  console.log('data', data)
+  console.log('data', data);
 
   return (
     <>
@@ -24,7 +17,7 @@ const ProductPage = async ({
       <h2>{product.fields.price}</h2>
       <Image
         alt="product image"
-        src={"https:" + product.fields.productImage.fields.file.url}
+        src={'https:' + product.fields.productImage.fields.file.url}
         width={500}
         height={500}
       />
