@@ -14,6 +14,8 @@ const ProductPage = async ({
 
   const data = await response.json();
 
+  console.log('data', data)
+
   return (
     <>
       <h1>this is one single product page</h1>

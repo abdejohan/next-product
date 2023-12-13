@@ -6,7 +6,7 @@ const client = createClient({
 });
 
 // Retrieve the list of blog posts from Contentful
-const getBlogPosts = async () => {
+const getProducts = async () => {
   const response = await client.getEntries({
     content_type: 'clumsiesTryingStuff',
   });
@@ -21,4 +21,4 @@ const getProduct = async (id: string) => {
   return response;
 };
 
-export { getBlogPosts, getProduct };
+export { getProducts, getProduct };

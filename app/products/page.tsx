@@ -1,4 +1,4 @@
-import { getBlogPosts } from '@/utils';
+import { getProducts } from '@/utils';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -13,14 +13,14 @@ type Product = {
 };
 
 const ProductPage = async () => {
-  const posts = await getBlogPosts();
+  const posts = await getProducts();
 
   return (
     <div>
       <ul>
         {posts.map((post: any) => (
           <li key={post.sys.id}>
-            <Link href={'/products/1'}>{post.fields.title}</Link>
+            <Link href={`/products/${post.sys.id}`}>{post.fields.title}</Link>
             <h2>{post.fields.description}</h2>
             <h2>{post.fields.price}</h2>
             <Image
